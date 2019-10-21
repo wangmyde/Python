@@ -195,3 +195,28 @@ df['Email Provider'] = df.Email.apply(
     )                                  # john.smith@gamil.com
                                        #从@处将名字分开，取“-1”处的，即得到“gmail.com”
 ```
+```
+print('This is a string'.split())
+```
+```
+['This', 'is', 'a', 'string']
+```
+```
+import codecademylib
+import pandas as pd
+
+df = pd.read_csv('employees.csv')
+
+# Add columns here
+get_last_name = lambda x: x.split()[-1]
+df['last_name'] = df.name.apply(get_last_name)
+
+print(df)
+```
+```
+id	name	hourly_wage	hours_worked	last_name
+0	10310	Lauren Durham	19	43	Durham
+1	18656	Grace Sellers	17	40	Sellers
+2	61254	Shirley Rasmussen	16	30	Rasmussen
+3	16886	Brian Rojas	18	47	Rojas
+```
