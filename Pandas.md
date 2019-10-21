@@ -93,3 +93,105 @@ index	month	clinic_east	clinic_north	clinic_south	clinic_west
 1	3	April	80	80	54	180
 2	5	June	112	109	79	129
 ```
+
+### Adding a Column 
+```
+df = pd.DataFrame([
+  [1, '3 inch screw', 0.5, 0.75],
+  [2, '2 inch nail', 0.10, 0.25],
+  [3, 'hammer', 3.00, 5.50],
+  [4, 'screwdriver', 2.50, 3.00]
+],
+  columns=['Product ID', 'Description', 'Cost to Manufacture', 'Price']
+)
+
+# Add columns here
+df['Is taxed?'] = 'Yes'
+```
+```
+Product ID	Description	Cost to Manufacture	Price	Is taxed?
+0	1	3 inch screw	0.5	0.75	Yes
+1	2	2 inch nail	0.1	0.25	Yes
+2	3	hammer	3.0	5.5	Yes
+3	4	screwdriver	2.5	3.0	Yes
+```
+```
+df = pd.DataFrame([
+  [1, '3 inch screw', 0.5, 0.75],
+  [2, '2 inch nail', 0.10, 0.25],
+  [3, 'hammer', 3.00, 5.50],
+  [4, 'screwdriver', 2.50, 3.00]
+],
+  columns=['Product ID', 'Description', 'Cost to Manufacture', 'Price']
+)
+
+# Add columns here
+df['Sold in Bulk?'] = ['Yes', 'Yes', 'No', 'No']
+print(df)
+```
+```
+Product ID	Description	Cost to Manufacture	Price	Sold in Bulk?
+0	1	3 inch screw	0.5	0.75	Yes
+1	2	2 inch nail	0.1	0.25	Yes
+2	3	hammer	3.0	5.5	No
+3	4	screwdriver	2.5	3.0	No
+```
+```
+import codecademylib
+import pandas as pd
+
+df = pd.DataFrame([
+  [1, '3 inch screw', 0.5, 0.75],
+  [2, '2 inch nail', 0.10, 0.25],
+  [3, 'hammer', 3.00, 5.50],
+  [4, 'screwdriver', 2.50, 3.00]
+],
+  columns=['Product ID', 'Description', 'Cost to Manufacture', 'Price']
+)
+
+# Add columns here
+df['Revenue'] = df.Price - df['Cost to Manufacture']
+print(df)
+```
+```
+Product ID	Description	Cost to Manufacture	Price	Revenue
+0	1	3 inch screw	0.5	0.75	0.25
+1	2	2 inch nail	0.1	0.25	0.15
+2	3	hammer	3.0	5.5	2.5
+3	4	screwdriver	2.5	3.0	0.5
+```
+```
+df = pd.DataFrame([
+  ['JOHN SMITH', 'john.smith@gmail.com'],
+  ['Jane Doe', 'jdoe@yahoo.com'],
+  ['joe schmo', 'joeschmo@hotmail.com']
+],
+columns=['Name', 'Email'])
+
+# Add columns here
+df['Lowercase Name'] = df.Name.apply(lower) #还有upper可以用，也可以应用在自己这一列
+print(df)
+```
+```
+Name	Email	Lowercase Name
+0	JOHN SMITH	john.smith@gmail.com	john smith
+1	Jane Doe	jdoe@yahoo.com	jane doe
+2	joe schmo	joeschmo@hotmail.com	joe schmo
+```
+
+### Return the first and last letters og a string
+```
+mylambda = lambda x: x[0] + x[-1]
+print(mylambda('This is a string'))
+```
+```
+Tg
+```
+
+### Split function
+```
+df['Email Provider'] = df.Email.apply(
+    lambda x: x.split('@')[-1]
+    )                                  # john.smith@gamil.com
+                                       #从@处将名字分开，取“-1”处的，即得到“gmail.com”
+```
